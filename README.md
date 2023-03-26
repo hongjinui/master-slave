@@ -15,7 +15,7 @@
 <code>./gradlew clean bootJar</code>
 <p>
 
-<p>./build/libs에 생성 된 master-slave-{version}-SNAPSHOT.jar 실행 ***서로 다른 터미널에서 실행해주세요***<br>
+<p>./build/libs에 생성 된 master-slave-{version}-SNAPSHOT.jar 실행 *** 서로 다른 터미널에서 실행해주세요. ***<br>
 <code>java -jar master-slave-{version}-SNAPSHOT.jar --spring.profiles.active=master -- 마스터</code><br>
 <code>java -jar master-slave-{version}-SNAPSHOT.jar --spring.profiles.active=slave -- 슬레이브(백업)</code>
 <p>
@@ -29,15 +29,14 @@
 <h3> db(mysql, h2)</h3>
 <p>
 <code>    # db 환경에 맞게 username,password 설정
-    # h2
-    url: jdbc:log4jdbc:h2:tcp://localhost/~/test
+    # h2 - 버전에 따라 데이터 베이스를 원격에서 만들어 주지않기 때문에 직접 데이터베이스를 만들어야하는 경우도 있습니다.
+    url: jdbc:log4jdbc:h2:tcp://localhost/~/test[데이터베이스명]
     username: sa
-    password:
+    password: 1234
     # mysql
-    url: jdbc:log4jdbc:mysql://localhost/test
+    url: jdbc:log4jdbc:mysql://localhost/test[데이터베이스명]
     username: username
     password: password
 </code>
-
 
 </p>
