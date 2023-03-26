@@ -1,0 +1,46 @@
+<!-- logback.xml -->
+<configuration>
+    <!-- 로그파일 생성 -->
+<!--    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>logs/today.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>logs/%d{yyyy-MM-dd}.log</fileNamePattern>-->
+<!--            <maxHistory>30</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder>-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg%n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+    <!-- 콘솔에 로그 출력 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- SQL Logger -->
+    <logger name="jdbc.sqltiming" level="info">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="jdbc.sqlonly" level="OFF">
+<!--        <appender-ref ref="console"/>-->
+    </logger>
+    <logger name="jdbc.audit" level="OFF">
+<!--        <appender-ref ref="console"/>-->
+    </logger>
+    <logger name="jdbc.resultset" level="OFF">
+<!--        <appender-ref ref="console"/>-->
+    </logger>
+    <logger name="jdbc.resultsettable" level="OFF">
+<!--        <appender-ref ref="console"/>-->
+    </logger>
+
+    <!-- 로그 레벨 지정 -->
+    <root level="debug">
+        <appender-ref ref="CONSOLE"/>
+<!--        <appender-ref ref="FILE"/>-->
+    </root>
+
+
+</configuration>

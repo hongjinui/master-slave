@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy # sql log
+#    url: jdbc:log4jdbc:h2:tcp://localhost/~/test # h2
+#    username: sa
+#    password:
+    url: jdbc:log4jdbc:mysql://localhost/test # mysql 환경에 맞게 username,password 설정
+    username: root
+    password: asdf1234
+    hikari:
+      maximum-pool-size: 3
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+logging:
+  level:
+    root: info
+---
+spring:
+  application:
+    name: master
+  config:
+    activate:
+      on-profile: master
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
+  main:
+    web-application-type: none # 웹 관련 빈 생성 안함
+#  quartz:
+#    scheduler-name: QuartzScheduler
+#    properties:
+#      org:
+#        quartz:
+#          threadPool:
+#            threadCount: 1
+---
+spring:
+  application:
+    name: slave
+  config:
+    activate:
+      on-profile: slave
+server:
+  port: 9000
+  shutdown: graceful
